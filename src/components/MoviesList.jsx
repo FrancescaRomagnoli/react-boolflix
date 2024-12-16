@@ -1,4 +1,5 @@
 import { useMovieAndShowsContext } from "../contexts/MovieAndShowsContext";
+import MediaCard from "./MediaCard";
 
 export default function MoviesList() {
   const { resultMovies } = useMovieAndShowsContext();
@@ -9,12 +10,7 @@ export default function MoviesList() {
         resultMovies.map((movie) => {
           return (
             <div key={movie.id}>
-              <ul>
-                <li>{movie.title}</li>
-                <li>{movie.original_title}</li>
-                <li>{movie.original_language}</li>
-                <li>{movie.vote_average}</li>
-              </ul>
+              <MediaCard media={movie} />
             </div>
           );
         })
