@@ -2,9 +2,7 @@ import { useState } from "react";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [results, setResults] = useState("");
-
-  const apiUrl = "https://api.themoviedb.org/3/search/movie?";
+  const [resultMovies, setResultMovies] = useState([]);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -23,7 +21,8 @@ function App() {
     fetch(`${url}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setResultMovies(data.results);
+        console.log(data.results);
       });
   };
 
@@ -47,6 +46,28 @@ function App() {
           </div>
         </div>
       </header>
+      <main>
+        <div>
+          {resultMovies.length > 0 ? (
+            resultMovies.map((movie) => {
+              return (
+                <div>
+                  <ul>
+                    <li>{movie.title}</li>
+                    <li>{movie.original_title}</li>
+                    <li>{movie.original_language}</li>
+                    <li>{movie.vote_average}</li>
+                  </ul>
+                </div>
+              );
+            })
+          ) : (
+            <>
+              <div>Search something</div>
+            </>
+          )}
+        </div>
+      </main>
     </>
   );
 }
