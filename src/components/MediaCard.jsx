@@ -11,9 +11,16 @@ export default function MediaCard({ media }) {
     setFlagError(true);
   };
 
+  // poster path construction
+  const posterImgPath = media.poster_path;
+  const posterImg = `https://image.tmdb.org/t/p/w342/${posterImgPath}`;
+
   return (
     <>
       <ul>
+        <li>
+          <img src={posterImg} alt="poster" />
+        </li>
         <li>{media.name || media.title}</li>
         <li>{media.original_name || media.original_title}</li>
         <li>
