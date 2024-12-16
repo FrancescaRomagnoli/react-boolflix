@@ -1,14 +1,14 @@
-import { MoviesContextProvider } from "./contexts/MovieContext.jsx";
+import { MoviesAndShowsContextProvider } from "./contexts/MovieAndShowsContext.jsx";
 
 import Header from "./components/Header";
 import Main from "./components/Main.jsx";
 
 function App() {
   return (
-    <MoviesContextProvider>
+    <MoviesAndShowsContextProvider>
       <Header />
       <Main />
-    </MoviesContextProvider>
+    </MoviesAndShowsContextProvider>
   );
 }
 

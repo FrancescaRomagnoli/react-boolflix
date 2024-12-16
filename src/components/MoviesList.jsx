@@ -1,7 +1,7 @@
-import { useMovieContext } from "../contexts/MovieContext";
+import { useMovieAndShowsContext } from "../contexts/MovieAndShowsContext";
 
 export default function MoviesList() {
-  const { resultMovies, setResultMovies } = useMovieContext();
+  const { resultMovies } = useMovieAndShowsContext();
 
   return (
     <>

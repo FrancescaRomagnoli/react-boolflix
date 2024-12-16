@@ -1,4 +1,5 @@
 import MoviesList from "./MoviesList";
+import ShowsList from "./ShowsList";
 
 export default function Main() {
   return (
@@ -6,6 +7,7 @@ export default function Main() {
       <main>
         <div>
           <MoviesList />
+          <ShowsList />
         </div>
       </main>
     </>
