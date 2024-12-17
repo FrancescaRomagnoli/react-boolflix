@@ -15,6 +15,7 @@ export const MediaContextProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [resultMovies, setResultMovies] = useState([]);
   const [resultShows, setResultShows] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   // url construction
   const apiUrl = import.meta.env.VITE_THEMOVIEDB_API_URL;
@@ -32,6 +33,9 @@ export const MediaContextProvider = ({ children }) => {
   const handleSearchButton = (event) => {
     event.preventDefault();
 
+    // loading
+    setIsLoading(true);
+
     // fetch movies
     fetch(`${constructedMovieUrl}`)
       .then((res) => res.json())
@@ -46,6 +50,7 @@ export const MediaContextProvider = ({ children }) => {
       .then((data) => {
         setResultShows(data.results);
         console.log(data.results);
+        setIsLoading(false);
       });
 
     setSearchTerm("");
@@ -62,6 +67,7 @@ export const MediaContextProvider = ({ children }) => {
         resultShows,
         handleSearch,
         handleSearchButton,
+        isLoading,
       }}
     >
       {children}
