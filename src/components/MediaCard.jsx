@@ -21,10 +21,21 @@ export default function MediaCard({ media }) {
 
   // converting vote into star icons
   const voteAverage = media.vote_average;
-  const maxStars = 5;
+  const maxStarsNum = 5;
 
-  const fullstars = Math.ceil(voteAverage / 2);
-  const emptyStart = maxStars - fullstars;
+  const fullStarsNum = Math.ceil(voteAverage / 2);
+  const emptyStarsNum = maxStarsNum - fullStarsNum;
+
+  const emptyStars = [...Array(emptyStarsNum)].map((star, index) => {
+    return <FontAwesomeIcon icon={faStar} key={index} />;
+  });
+
+  const fullStars = [...Array(fullStarsNum)].map((star, index) => {
+    return <FontAwesomeIcon icon={faStarSolid} key={index} />;
+  });
+
+  console.log(emptyStars);
+  console.log(fullStars);
 
   return (
     <>
@@ -46,11 +57,8 @@ export default function MediaCard({ media }) {
           )}
         </li>
         <li>
-          {media.vote_average}
-          <span>
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStarSolid} />
-          </span>
+          <span>{fullStars}</span>
+          <span>{emptyStars}</span>
         </li>
       </ul>
     </>
