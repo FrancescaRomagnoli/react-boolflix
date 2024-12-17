@@ -43,33 +43,42 @@ export default function MediaCard({ media }) {
   return (
     <>
       <div className="card">
-        <div>
+        <div className="card-poster">
           {posterImgError ? (
-            <img src="https://placehold.co/342x513"></img>
+            <img src="https://placehold.co/300x500"></img>
           ) : (
             <img src={posterImg} onError={handlePosterImgError}></img>
           )}
         </div>
         <div className="card-overlay">
-          <ul>
-            <li>{media.name || media.title}</li>
-            <li>{media.original_name || media.original_title}</li>
-            <li>
-              {flagError ? (
-                <span>{originalLanguage}</span>
-              ) : (
-                <img
-                  src={languageFlag}
-                  alt={originalLanguage}
-                  onError={handleFlagError}
-                />
-              )}
-            </li>
-            <li>
-              <span>{fullStars}</span>
-              <span>{emptyStars}</span>
-            </li>
-          </ul>
+          <div className="card-overlay card-body">
+            <ul>
+              <li>
+                <h2 className="card-title">{media.name || media.title}</h2>
+              </li>
+              <li className="text-muted text-small">
+                {media.original_name || media.original_title}
+              </li>
+              <li className="text-muted text-small">
+                {flagError ? (
+                  <span>{originalLanguage}</span>
+                ) : (
+                  <img
+                    src={languageFlag}
+                    alt={originalLanguage}
+                    onError={handleFlagError}
+                  />
+                )}
+              </li>
+              <li className="rating">
+                <span>{fullStars}</span>
+                <span>{emptyStars}</span>
+              </li>
+              <li className="text-muted text-small">
+                {media.overview ? media.overview : "tba"}
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </>

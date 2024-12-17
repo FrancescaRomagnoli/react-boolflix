@@ -6,7 +6,7 @@ export default function Header() {
       <header>
         <div className="header-container">
           <div>
-            <div>boolflix</div>
+            <div className="logo">boolflix</div>
           </div>
           <div>
             <SearchBar />

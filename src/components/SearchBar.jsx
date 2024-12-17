@@ -10,8 +10,9 @@ export default function SearchBar() {
         value={searchTerm}
         onChange={handleSearch}
         placeholder="search..."
+        className="input-field"
       />
-      <button>search</button>
+      <button className="btn btn-red">search</button>
     </form>
   );
 }

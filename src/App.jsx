@@ -6,8 +6,10 @@ import Main from "./components/Main.jsx";
 function App() {
   return (
     <MediaContextProvider>
-      <Header />
-      <Main />
+      <div className="wrapper">
+        <Header />
+        <Main />
+      </div>
     </MediaContextProvider>
   );
 }

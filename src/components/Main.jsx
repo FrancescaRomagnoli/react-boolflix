@@ -1,5 +1,5 @@
 import { useMediaContext } from "../contexts/GlobalContext";
-import MediaList from "./MediaList";
+import Section from "./Section";
 
 export default function Main() {
   const { resultMovies, resultShows } = useMediaContext();
@@ -7,16 +7,8 @@ export default function Main() {
   return (
     <>
       <main>
-        <div>
-          <MediaList mediaList={resultMovies}>
-            <h2>Movies</h2>
-          </MediaList>
-        </div>
-        <div>
-          <MediaList mediaList={resultShows}>
-            <h2>Movies</h2>
-          </MediaList>
-        </div>
+        <Section mediaList={resultMovies} sectionTitle={"Movies"} />
+        <Section mediaList={resultShows} sectionTitle={"TV Shows"} />
       </main>
     </>
   );

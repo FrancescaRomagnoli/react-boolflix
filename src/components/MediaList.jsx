@@ -1,23 +1,18 @@
 import { useMediaContext } from "../contexts/GlobalContext";
 import MediaCard from "./MediaCard";
 
-export default function MediaList({ children, mediaList }) {
+export default function MediaList({ mediaList }) {
   return (
     <>
-      {children}
-      {mediaList.length > 0 ? (
-        mediaList.map((media) => {
+      <div className="card-row">
+        {mediaList.map((media) => {
           return (
             <div key={media.id}>
               <MediaCard media={media} />
             </div>
           );
-        })
-      ) : (
-        <>
-          <div>Search something</div>
-        </>
-      )}
+        })}
+      </div>
     </>
   );
 }
