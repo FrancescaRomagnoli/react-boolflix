@@ -1,8 +1,7 @@
-import { useMovieAndShowsContext } from "../contexts/MovieAndShowsContext";
+import { useMediaContext } from "../contexts/GlobalContext";
 
 export default function SearchBar() {
-  const { searchTerm, handleSearch, handleSearchButton } =
-    useMovieAndShowsContext();
+  const { searchTerm, handleSearch, handleSearchButton } = useMediaContext();
 
   return (
     <form onSubmit={handleSearchButton}>

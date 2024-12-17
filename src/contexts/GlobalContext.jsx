@@ -1,24 +1,24 @@
 import { createContext, useContext, useState } from "react";
 
 // # movies and tv shows contexts
-const MoviesAndShowsContext = createContext();
+const MediaContext = createContext();
 
 // # export of movie and tv shows context
 
-export const useMovieAndShowsContext = () => {
-  return useContext(MoviesAndShowsContext);
+export const useMediaContext = () => {
+  return useContext(MediaContext);
 };
 
 // # export of context provider
 
-export const MoviesAndShowsContextProvider = ({ children }) => {
+export const MediaContextProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [resultMovies, setResultMovies] = useState([]);
   const [resultShows, setResultShows] = useState([]);
 
   // url construction
   const apiUrl = import.meta.env.VITE_THEMOVIEDB_API_URL;
-  const apiKey = import.meta.env.VITE_THEMOVIEDB_API_KEY;
+  const apiKey = "dee215cd75582e4e79938cebf57db077";
 
   const constructedMovieUrl = `${apiUrl}search/movie?api_key=${apiKey}&query=${searchTerm}&language=it-IT`;
 
@@ -52,7 +52,7 @@ export const MoviesAndShowsContextProvider = ({ children }) => {
   // return
 
   return (
-    <MoviesAndShowsContext.Provider
+    <MediaContext.Provider
       value={{
         searchTerm,
         setSearchTerm,
@@ -63,6 +63,6 @@ export const MoviesAndShowsContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </MoviesAndShowsContext.Provider>
+    </MediaContext.Provider>
   );
 };
