@@ -47,6 +47,8 @@ export const MediaContextProvider = ({ children }) => {
         setResultShows(data.results);
         console.log(data.results);
       });
+
+    setSearchTerm("");
   };
 
   // return
