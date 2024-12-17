@@ -19,6 +19,12 @@ export default function MediaCard({ media }) {
   const posterImgPath = media.poster_path;
   const posterImg = `https://image.tmdb.org/t/p/w342/${posterImgPath}`;
 
+  const [posterImgError, setPosterImgError] = useState(false);
+
+  const handlePosterImgError = () => {
+    setPosterImgError(true);
+  };
+
   // converting vote into star icons
   const voteAverage = media.vote_average;
   const maxStarsNum = 5;
@@ -34,33 +40,38 @@ export default function MediaCard({ media }) {
     return <FontAwesomeIcon icon={faStarSolid} key={index} />;
   });
 
-  console.log(emptyStars);
-  console.log(fullStars);
-
   return (
     <>
-      <ul>
-        <li>
-          <img src={posterImg} alt="poster" />
-        </li>
-        <li>{media.name || media.title}</li>
-        <li>{media.original_name || media.original_title}</li>
-        <li>
-          {flagError ? (
-            <span>{originalLanguage}</span>
+      <div className="card">
+        <div>
+          {posterImgError ? (
+            <img src="https://placehold.co/342x513"></img>
           ) : (
-            <img
-              src={languageFlag}
-              alt={originalLanguage}
-              onError={handleFlagError}
-            />
+            <img src={posterImg} onError={handlePosterImgError}></img>
           )}
-        </li>
-        <li>
-          <span>{fullStars}</span>
-          <span>{emptyStars}</span>
-        </li>
-      </ul>
+        </div>
+        <div className="card-overlay">
+          <ul>
+            <li>{media.name || media.title}</li>
+            <li>{media.original_name || media.original_title}</li>
+            <li>
+              {flagError ? (
+                <span>{originalLanguage}</span>
+              ) : (
+                <img
+                  src={languageFlag}
+                  alt={originalLanguage}
+                  onError={handleFlagError}
+                />
+              )}
+            </li>
+            <li>
+              <span>{fullStars}</span>
+              <span>{emptyStars}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </>
   );
 }

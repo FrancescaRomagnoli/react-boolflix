@@ -2,3 +2,34 @@
   display: flex;
   justify-content: space-between;
 }
+
+ul {
+  list-style-type: none;
+}
+
+/* # card */
+
+.card {
+  position: relative;
+}
+
+.card-overlay {
+  width: 342px;
+  height: 513px;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+
+  color: white;
+  display: none;
+}
+
+.card:hover .card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}

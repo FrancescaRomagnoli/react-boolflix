@@ -8,8 +8,14 @@ export default function Main() {
     <>
       <main>
         <div>
-          <MediaList mediaList={resultMovies} />
-          <MediaList mediaList={resultShows} />
+          <MediaList mediaList={resultMovies}>
+            <h2>Movies</h2>
+          </MediaList>
+        </div>
+        <div>
+          <MediaList mediaList={resultShows}>
+            <h2>Movies</h2>
+          </MediaList>
         </div>
       </main>
     </>
